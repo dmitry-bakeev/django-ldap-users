@@ -138,6 +138,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 
 
+# Auth
+
+AUTH_USER_MODEL = 'users.User'
+
+# This SEPARATE_CHARACTER is using to separate domain and username in User.username field
+# Do not edit this after creating users, because it broken all user's accounts
+SEPARATE_CHARACTER = '?'
+
+# If your DOMAIN_CHOICES contains DOMAIN_SUPERUSER change this value to another in local_settings.py
+# ATTENTION: This param store in db after creating a superuser
+# If you change this value you can loss superuser's account
+DOMAIN_SUPERUSER = 'super'
+
+
 # Load local settings
 
 try:
