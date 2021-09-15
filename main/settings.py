@@ -142,6 +142,15 @@ MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'users.User'
 
+# Like choices to model field ('value-to-save-in-db', 'display-value')
+# Example
+# Set your values in local_settings.py
+DOMAIN_CHOICES = (
+    ('domain_1', 'Domain_1'),
+    ('domain_2', 'Domain_2'),
+    ('domain_n', 'Domain_n'),
+)
+
 # This SEPARATE_CHARACTER is using to separate domain and username in User.username field
 # Do not edit this after creating users, because it broken all user's accounts
 SEPARATE_CHARACTER = '?'
