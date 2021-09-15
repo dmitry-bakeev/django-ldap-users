@@ -142,6 +142,12 @@ MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'users.User'
 
+# Auth backend
+AUTHENTICATION_BACKENDS = (
+    'users.backends.DomainModelBackend',
+    'users.backends.LDAPModelBackend',
+)
+
 # Like choices to model field ('value-to-save-in-db', 'display-value')
 # Example
 # Set your values in local_settings.py
@@ -159,6 +165,30 @@ SEPARATE_CHARACTER = '?'
 # ATTENTION: This param store in db after creating a superuser
 # If you change this value you can loss superuser's account
 DOMAIN_SUPERUSER = 'super'
+
+# For each domain in DOMAIN_CHOICES need to set URI, DN, DOMAIN
+# Example
+# Set your values in local_settings.py
+AUTH_LDAP_SERVERS = {
+    'domain_1': {
+        'URI': '127.0.0.1',  # domain_1 IP
+        'DN': 'dc=domain_1,dc=com',
+        'DOMAIN': 'domain_1.com'
+    },
+    'domain_2': {
+        'URI': '127.0.0.1',  # domain_2 IP
+        'DN': 'dc=domain_2,dc=com',
+        'DOMAIN': 'domain_2.com'
+    },
+    'domain_n': {
+        'URI': '127.0.0.1',  # domain_n IP
+        'DN': 'dc=domain_n,dc=com',
+        'DOMAIN': 'domain_n.com'
+    },
+}
+
+# Automatic user account conform on first login via LDAP
+AUTO_CONFIRM_USER = False
 
 
 # Load local settings

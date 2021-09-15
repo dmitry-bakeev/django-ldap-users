@@ -35,8 +35,8 @@ class AuthenticationLDAPForm(AuthenticationForm):
         return self.cleaned_data
 
     def confirm_login_allowed(self, user):
-        if not user.is_active:
+        if not user.is_confirmed:
             raise ValidationError(
                 self.error_messages['unconfirmed'],
-                code='inactive',
+                code='unconfirmed',
             )
