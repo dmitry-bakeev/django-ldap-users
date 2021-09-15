@@ -1,0 +1,28 @@
+{% extends 'empty.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% translate 'Login' %}
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div>
+            <p>
+                {% blocktranslate %}
+                    You are logged as {{ user }}, but you do not have sufficient rights for this page. Do you have another account?
+                {% endblocktranslate %}
+            </p>
+        </div>
+    {% endif %}
+
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>
+                <button>{% translate 'Login' %}</button>
+            </p>
+        </form>
+    </div>
+{% endblock %}
