@@ -142,6 +142,9 @@ MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'users.User'
 
+LOGOUT_REDIRECT_URL = 'users:login'
+LOGIN_URL = 'users:login'
+
 # Auth backend
 AUTHENTICATION_BACKENDS = (
     'users.backends.DomainModelBackend',
